@@ -34,6 +34,7 @@ jobs:
           set -o pipefail
           mkdir -p .buildozer_cache bin
           chmod -R 777 .buildozer_cache
+          chmod -R 777 "${{ github.workspace }}"
           docker run --rm \
             -v "${{ github.workspace }}":/home/user/hostcwd \
             -v "${{ github.workspace }}/.buildozer_cache":/home/user/.buildozer \
