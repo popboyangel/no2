@@ -65,6 +65,14 @@ RUN python3 -m venv ${HOME_DIR}/.venv
 ENV VIRTUAL_ENV="${HOME_DIR}/.venv"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
+# 打印实际的 python3 版本，方便对照 buildozer.spec 里
+# requirements = python3==X.Y.Z 是否写对了（如果以后换了上面的
+# FROM 基础镜像 tag，这行打印出来的版本号变了，就要记得同步改
+# buildozer.spec）
+RUN echo "############ hostpython3 version ############" \
+    && python3 --version \
+    && echo "###############################################"
+
 RUN pip install --upgrade "Cython<3.0" wheel pip buildozer
 
 ENTRYPOINT ["buildozer"]
