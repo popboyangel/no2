@@ -3,7 +3,7 @@ title = MyCGC Monitor
 package.name = mycgc
 package.domain = org.dahai.mycgc
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,json
+source.include_exts = py,png,jpg,kv,atlas,json,ttf,otf
 version = 1.0
 
 requirements = python3==3.11.9,hostpython3==3.11.9,kivy==2.3.0,pyjnius,requests,certifi
