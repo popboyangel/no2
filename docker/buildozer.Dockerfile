@@ -65,11 +65,12 @@ RUN python3 -m venv ${HOME_DIR}/.venv
 ENV VIRTUAL_ENV="${HOME_DIR}/.venv"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
-# 打印实际的 python3 版本，方便对照 buildozer.spec 里
-# requirements = python3==X.Y.Z 是否写对了（如果以后换了上面的
-# FROM 基础镜像 tag，这行打印出来的版本号变了，就要记得同步改
-# buildozer.spec）
-RUN echo "############ hostpython3 version ############" \
+# 打印实际的 python3 版本，方便排查镶像本身用的什么版本
+# （注意：这个版本号跟 buildozer.spec 里 requirements 的
+# python3==X.Y.Z / hostpython3==X.Y.Z 是两回事——那两个是
+# python-for-android 内部 recipe 的版本号，必须彼此一致，
+# 但和这里镶像系统自带的 python3 版本没有必然关系）
+RUN echo "############ image python3 version ############" \
     && python3 --version \
     && echo "###############################################"
 
